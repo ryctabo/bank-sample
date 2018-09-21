@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.ryctabo.bank.sample'
+version '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = 'App'
+
+dependencies {
+    // This dependency is found on compile classpath of this component and consumers.
+    compile 'com.google.guava:guava:23.0'
+
+    // Use JUnit test framework
+    testCompile 'junit:junit:4.12'
+}
