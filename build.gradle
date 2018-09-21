@@ -13,7 +13,7 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-mainClassName = 'App'
+mainClassName = 'com.ryctabo.bank.sample.App'
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
