@@ -18,7 +18,7 @@ This account has the following restrictions:
 **Current account**:
 
 This account has the following restrictions:
-- It has a handling fee of $3000 COP
+- It has a handling fee of $5000 COP
 - It doesn't have free transactions
 - The percent charged per transaction is 3%
 
@@ -55,8 +55,6 @@ corresponding requests locally.
 ```
 ./gradlew run
 ```
-After the server is running, you can access the project through the browser 
-in the next url (http://localhost:8080/api.hulkstore).
 
 ### Running Tests
 The tests in this project are make with JUnit. You need use the 
