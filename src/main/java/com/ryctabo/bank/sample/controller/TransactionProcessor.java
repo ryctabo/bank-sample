@@ -61,7 +61,7 @@ public class TransactionProcessor implements Processor<Transaction> {
 
                 Account recipient = transaction.getRecipient();
                 if (recipient != null)
-                    recipient.setAmount(transaction.getAmount());
+                    recipient.setAmount(recipient.getAmount() + transaction.getAmount());
                 break;
         }
 
