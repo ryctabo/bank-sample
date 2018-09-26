@@ -32,15 +32,22 @@ public class Transaction {
 
     private long id;
 
-    private TransactionType type;
+    private final TransactionType type;
 
-    private Account from;
+    private Account own;
 
-    private Account to;
+    private Account recipient;
 
     private double amount;
 
+    private double cost;
+
     private LocalDateTime created;
+
+    public Transaction(TransactionType type, Account own) {
+        this.type = type;
+        this.own = own;
+    }
 
     public long getId() {
         return id;
@@ -54,24 +61,30 @@ public class Transaction {
         return type;
     }
 
-    public void setType(TransactionType type) {
-        this.type = type;
+    public Account getOwn() {
+        return own;
     }
 
-    public Account getFrom() {
-        return from;
+    public void setOwn(Account own) {
+        this.own = own;
     }
 
-    public void setFrom(Account from) {
-        this.from = from;
+    public Account getRecipient() {
+        return recipient;
     }
 
-    public Account getTo() {
-        return to;
+    public void setRecipient(Account recipient) {
+        this.recipient = recipient;
     }
 
-    public void setTo(Account to) {
-        this.to = to;
+    public boolean belong(long userId) {
+        if (this.own.getUser().getId() == userId)
+            return true;
+
+        if (this.recipient != null)
+            return this.recipient.getUser().getId() == userId;
+
+        return false;
     }
 
     public double getAmount() {
@@ -80,6 +93,14 @@ public class Transaction {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
     }
 
     public LocalDateTime getCreated() {

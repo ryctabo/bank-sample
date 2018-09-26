@@ -39,8 +39,7 @@ public class User {
 
     private List<Account> accounts;
 
-    public User(long id, String username, Person person) {
-        this.id = id;
+    public User(String username, Person person) {
         this.username = username;
         this.person = person;
         this.accounts = new ArrayList<>();

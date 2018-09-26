@@ -20,62 +20,20 @@
  * SOFTWARE.
  */
 
-package com.ryctabo.bank.sample.model;
+package com.ryctabo.bank.sample.service;
+
+import java.util.List;
 
 /**
  * @author Gustavo Pacheco (ryctabo at gmail.com)
  * @version 1.0-SNAPSHOT
  */
-public abstract class Account {
+public interface Service<T> {
 
-    private long id;
+    List<T> get();
 
-    private String number;
+    T get(long id);
 
-    private double amount;
+    T add(T entity);
 
-    private User user;
-
-    public Account(long id, String number) {
-        this.id = id;
-        this.number = number;
-    }
-
-    public abstract double getHandlingFee();
-
-    public abstract int getFreeTransactions();
-
-    public abstract float getPercentOfChargePerTransaction();
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

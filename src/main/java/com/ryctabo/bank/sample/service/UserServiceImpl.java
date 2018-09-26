@@ -20,62 +20,51 @@
  * SOFTWARE.
  */
 
-package com.ryctabo.bank.sample.model;
+package com.ryctabo.bank.sample.service;
+
+import com.ryctabo.bank.sample.model.User;
+import com.ryctabo.bank.sample.persistence.Database;
+import com.ryctabo.bank.sample.service.validator.Validator;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Gustavo Pacheco (ryctabo at gmail.com)
  * @version 1.0-SNAPSHOT
  */
-public abstract class Account {
+public class UserServiceImpl implements UserService {
 
-    private long id;
+    private Map<Long, User> users = Database.getUsers();
 
-    private String number;
-
-    private double amount;
-
-    private User user;
-
-    public Account(long id, String number) {
-        this.id = id;
-        this.number = number;
+    @Override
+    public List<User> get() {
+        return new ArrayList<>(users.values());
     }
 
-    public abstract double getHandlingFee();
-
-    public abstract int getFreeTransactions();
-
-    public abstract float getPercentOfChargePerTransaction();
-
-    public long getId() {
-        return id;
+    @Override
+    public User get(long id) {
+        Validator.validateId(id);
+        return users.get(id);
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    @Override
+    public User add(User user) {
+        long id = users.size() + 1;
+        user.setId(id);
 
-    public String getNumber() {
-        return number;
-    }
+        this.users.put(id, user);
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    @Override
+    public User get(String username) {
+        for (User user : get()) {
+            if (username.equals(user.getUsername()))
+                return user;
+        }
+        return null;
     }
 }

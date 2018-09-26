@@ -20,16 +20,16 @@
  * SOFTWARE.
  */
 
-package com.ryctabo.bank.sample;
+package com.ryctabo.bank.sample.service;
+
+import com.ryctabo.bank.sample.model.User;
 
 /**
  * @author Gustavo Pacheco (ryctabo at gmail.com)
  * @version 1.0-SNAPSHOT
  */
-public class App {
+public interface UserService extends Service<User> {
 
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
-    }
+    User get(String username);
 
 }

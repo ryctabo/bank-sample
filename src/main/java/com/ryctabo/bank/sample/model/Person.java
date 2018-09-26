@@ -23,6 +23,7 @@
 package com.ryctabo.bank.sample.model;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 /**
  * @author Gustavo Pacheco (ryctabo at gmail.com)
@@ -45,6 +46,10 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return Period.between(this.birthdate, LocalDate.now()).getYears();
     }
 
     public LocalDate getBirthdate() {

@@ -20,62 +20,45 @@
  * SOFTWARE.
  */
 
-package com.ryctabo.bank.sample.model;
+package com.ryctabo.bank.sample.persistence;
+
+import com.ryctabo.bank.sample.model.*;
+
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Gustavo Pacheco (ryctabo at gmail.com)
  * @version 1.0-SNAPSHOT
  */
-public abstract class Account {
+public class Database {
 
-    private long id;
+    private static final Map<Long, User> USERS = new HashMap<>();
 
-    private String number;
+    private static final Map<Long, Transaction> TRANSACTIONS = new HashMap<>();
 
-    private double amount;
+    static {
+        //Initializing database
+        LocalDate birthdate = LocalDate.of(1993, Month.FEBRUARY, 11);
+        Person person = new Person("Gustavo Pacheco", birthdate);
+        User user = new User("ryctabo", person);
+        user.setId(1L);
 
-    private User user;
+        user.addAccount(new SavingsAccount(1L, "0001"));
+        user.addAccount(new CurrentAccount(1L, "0002"));
+        user.addAccount(new KidsSavingsAccount(1L, "0003"));
 
-    public Account(long id, String number) {
-        this.id = id;
-        this.number = number;
+        USERS.put(1L, user);
     }
 
-    public abstract double getHandlingFee();
-
-    public abstract int getFreeTransactions();
-
-    public abstract float getPercentOfChargePerTransaction();
-
-    public long getId() {
-        return id;
+    public static Map<Long, User> getUsers() {
+        return USERS;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public static Map<Long, Transaction> getTransactions() {
+        return TRANSACTIONS;
     }
 
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

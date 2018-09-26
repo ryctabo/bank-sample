@@ -28,9 +28,13 @@ package com.ryctabo.bank.sample.model;
  */
 public class CurrentAccount extends Account {
 
+    public CurrentAccount(long id, String number) {
+        super(id, number);
+    }
+
     @Override
     public double getHandlingFee() {
-        return 3000d;
+        return 5000d;
     }
 
     @Override

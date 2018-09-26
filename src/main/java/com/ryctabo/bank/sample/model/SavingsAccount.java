@@ -28,6 +28,10 @@ package com.ryctabo.bank.sample.model;
  */
 public class SavingsAccount extends Account {
 
+    public SavingsAccount(long id, String number) {
+        super(id, number);
+    }
+
     @Override
     public double getHandlingFee() {
         return 2000d;

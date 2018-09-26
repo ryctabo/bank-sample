@@ -20,62 +20,14 @@
  * SOFTWARE.
  */
 
-package com.ryctabo.bank.sample.model;
+package com.ryctabo.bank.sample.controller;
 
 /**
  * @author Gustavo Pacheco (ryctabo at gmail.com)
  * @version 1.0-SNAPSHOT
  */
-public abstract class Account {
+public interface Processor<T> {
 
-    private long id;
+    void process(T process);
 
-    private String number;
-
-    private double amount;
-
-    private User user;
-
-    public Account(long id, String number) {
-        this.id = id;
-        this.number = number;
-    }
-
-    public abstract double getHandlingFee();
-
-    public abstract int getFreeTransactions();
-
-    public abstract float getPercentOfChargePerTransaction();
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
