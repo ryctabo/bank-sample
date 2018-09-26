@@ -47,8 +47,8 @@ public class Database {
         user.setId(1L);
 
         user.addAccount(new SavingsAccount(1L, "0001"));
-        user.addAccount(new CurrentAccount(1L, "0002"));
-        user.addAccount(new KidsSavingsAccount(1L, "0003"));
+        user.addAccount(new CurrentAccount(2L, "0002"));
+        user.addAccount(new KidsSavingsAccount(3L, "0003"));
 
         USERS.put(1L, user);
     }
