@@ -13,7 +13,7 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-mainClassName = 'com.ryctabo.bank.sample.App'
+mainClassName = 'com.ryctabo.bank.sample.BankApp'
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
@@ -21,4 +21,14 @@ dependencies {
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
+}
+
+run {
+    standardInput = System.in;
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.ryctabo.bank.sample.BankApp'
+    }
 }
